@@ -1,16 +1,50 @@
-# React + Vite
+# Job Application Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live: [job-application-tracker-one-beta.vercel.app](https://job-application-tracker-one-beta.vercel.app)
 
-Currently, two official plugins are available:
+A full-stack dashboard for tracking job applications, with authenticated user accounts, list and kanban views, and a background automation that logs new applications straight from Gmail.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Public sign-ups are disabled.** Try the live demo with:
+- Email: `demo@jobtracker.com`
+- Password: `demo1234`
 
-## React Compiler
+The demo account is seeded with sample applications and is fully separate from any real user's data.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Email/password authentication via Supabase Auth
+- Per-user data isolation using Postgres Row Level Security, each user only ever sees their own applications
+- List view and Kanban view, with native HTML5 drag-and-drop for status updates (no external drag-and-drop library)
+- Add and delete applications
+- Background automation (see [Job Alert Automation](https://github.com/p-lorb/portfolio) on my portfolio) that watches Gmail for new application-related emails and logs them automatically via n8n
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech stack
+
+- React (Vite)
+- Supabase (Auth + Postgres + Row Level Security)
+- Deployed on Vercel
+
+## Running locally
+
+```bash
+git clone https://github.com/p-lorb/job-application-tracker.git
+cd job-application-tracker
+npm install
+```
+
+Create a `.env` file with:
+
+```
+VITE_SUPABASE_URL=your-supabase-project-url
+VITE_SUPABASE_KEY=your-supabase-publishable-key
+```
+
+Then:
+
+```bash
+npm run dev
+```
+
+## How this was built
+
+I built this as a hands-on way into React and Supabase, working through the implementation with heavy AI-assisted guidance rather than working entirely from prior independent React/Supabase experience. I'm being upfront about that: I understand what each part of the app does and why, but I'm still going back through pieces like `Dashboard.jsx` and `Kanban.jsx` on my own to deepen that understanding further. My portfolio's Skills section reflects this honestly, React and Supabase are marked as "currently building toward," not "proficient."
